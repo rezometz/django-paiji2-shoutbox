@@ -13,6 +13,7 @@ class NoteListView(generic.ListView):
     model = Note
     paginate_by = 25
     context_object_name = 'notes'
+    template_name = 'shoutbox/note_list.html'
 
     def get_context_data(self, **kwargs):
         context = super(NoteListView, self).get_context_data(**kwargs)
@@ -51,6 +52,7 @@ class NoteCreateView(generic.CreateView):
 class NoteEditView(generic.UpdateView):
     model = Note
     fields = ('message', )
+    template_name = 'shoutbox/note_form.html'
 
     def dispatch(self, request, *args, **kwargs):
         """ Making sure that only authors can update notes """
@@ -59,7 +61,7 @@ class NoteEditView(generic.UpdateView):
             return HttpResponseNotFound(
                 _('Rezo is not hacked. You don\'t have the permission xD')
             )
-            return super(NoteEditView, self).dispatch(request, *args, **kwargs)
+        return super(NoteEditView, self).dispatch(request, *args, **kwargs)
 
     def get_success_url(self):
         messages.success(
@@ -72,6 +74,7 @@ class NoteEditView(generic.UpdateView):
 
 class NoteDeleteView(generic.DeleteView):
     model = Note
+    template_name = 'shoutbox/note_confirm_delete.html'
 
     def dispatch(self, request, *args, **kwargs):
         """ Making sure that only authors can update notes """
@@ -80,9 +83,9 @@ class NoteDeleteView(generic.DeleteView):
             return HttpResponseNotFound(
                 _('Rezo is not hacked. You don\'t have the permission xD')
             )
-            return super(NoteDeleteView, self).dispatch(
-                request, *args, **kwargs
-            )
+        return super(NoteDeleteView, self).dispatch(
+            request, *args, **kwargs
+        )
 
     def get_success_url(self):
         messages.success(

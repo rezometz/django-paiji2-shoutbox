@@ -11,7 +11,7 @@ register = template.Library()
 
 
 @register.inclusion_tag(
-    'bulletin_board/bulletin_board_short.html',
+    'shoutbox/bulletin_board_short.html',
     takes_context=True,
 )
 def display_bulletin_board(context, nb=5):
