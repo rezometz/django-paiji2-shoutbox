@@ -4,6 +4,7 @@ from modular_blocks import ModuleApp, TemplateTagBlock, modules
 
 from . import urls
 
+
 class BulletinBoardModule(ModuleApp):
     app_name = 'bulletin_board'
     name = 'bulletin-board'

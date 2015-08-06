@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 from .views import *
 
 
-urlpatterns = patterns('',
+urlpatterns = [
     url(
         r'^board$',
         login_required(NoteListView.as_view()),
@@ -26,4 +26,4 @@ urlpatterns = patterns('',
         login_required(NoteDeleteView.as_view()),
         name="bulletin-delete",
     ),
-)
+]
