@@ -9,18 +9,18 @@ class Migration(SchemaMigration):
 
     def forwards(self, orm):
         # Adding model 'Note'
-        db.create_table(u'bulletin_board_note', (
+        db.create_table(u'paiji2_shoutbox_note', (
             (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('author', self.gf('django.db.models.fields.related.ForeignKey')(related_name='notes', to=orm['rezo.User'])),
             ('message', self.gf('django.db.models.fields.CharField')(max_length=200)),
             ('posted_at', self.gf('django.db.models.fields.DateField')()),
         ))
-        db.send_create_signal(u'bulletin_board', ['Note'])
+        db.send_create_signal(u'paiji2_shoutbox', ['Note'])
 
 
     def backwards(self, orm):
         # Deleting model 'Note'
-        db.delete_table(u'bulletin_board_note')
+        db.delete_table(u'paiji2_shoutbox_note')
 
 
     models = {
@@ -37,7 +37,7 @@ class Migration(SchemaMigration):
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'name': ('django.db.models.fields.CharField', [], {'max_length': '50'})
         },
-        u'bulletin_board.note': {
+        u'paiji2_shoutbox.note': {
             'Meta': {'object_name': 'Note'},
             'author': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'notes'", 'to': u"orm['rezo.User']"}),
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
@@ -70,4 +70,4 @@ class Migration(SchemaMigration):
         }
     }
 
-    complete_apps = ['bulletin_board']
+    complete_apps = ['paiji2_shoutbox']

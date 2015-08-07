@@ -10,12 +10,12 @@ class Migration(SchemaMigration):
     def forwards(self, orm):
 
         # Changing field 'Note.posted_at'
-        db.alter_column(u'bulletin_board_note', 'posted_at', self.gf('django.db.models.fields.DateTimeField')())
+        db.alter_column(u'paiji2_shoutbox_note', 'posted_at', self.gf('django.db.models.fields.DateTimeField')())
 
     def backwards(self, orm):
 
         # Changing field 'Note.posted_at'
-        db.alter_column(u'bulletin_board_note', 'posted_at', self.gf('django.db.models.fields.DateField')())
+        db.alter_column(u'paiji2_shoutbox_note', 'posted_at', self.gf('django.db.models.fields.DateField')())
 
     models = {
         u'auth.group': {
@@ -31,7 +31,7 @@ class Migration(SchemaMigration):
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'name': ('django.db.models.fields.CharField', [], {'max_length': '50'})
         },
-        u'bulletin_board.note': {
+        u'paiji2_shoutbox.note': {
             'Meta': {'ordering': "('-posted_at',)", 'object_name': 'Note'},
             'author': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'notes'", 'to': u"orm['rezo.User']"}),
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
@@ -64,4 +64,4 @@ class Migration(SchemaMigration):
         }
     }
 
-    complete_apps = ['bulletin_board']
+    complete_apps = ['paiji2_shoutbox']
