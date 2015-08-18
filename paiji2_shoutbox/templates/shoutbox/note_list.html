@@ -1,7 +1,7 @@
 {% extends "home/layout_three_columns.html" %}
 
 {% load cache %}
-{% load bulletin %}
+{% load shoutbox %}
 {% load i18n %}
 {% load bootstrap3 %}
 
@@ -12,7 +12,7 @@
     <h3>{% trans 'Shoutbox' %}{% trans 'Records' %}</h3>
 
     <div class="pagination-container">
-    {% bootstrap_pagination page_obj %}
+        {% bootstrap_pagination page_obj %}
     </div>
 
     <form action="{% url 'bulletin-add' %}" method="post">
@@ -28,35 +28,35 @@
         <br />
         {% buttons %}
         <button type="submit" style="display:none; position: absolute; left: -9999px; width: 1px; height: 1px;" class="btn btn-success pull-right"/>
-        {% endbuttons %}
-        <div class="clearfix"></div>
+            {% endbuttons %}
+            <div class="clearfix"></div>
     </form>
 
-        <ul class="list-unstyled">
-            {% for note in notes %}
-            <li>
+    <ul class="list-unstyled">
+        {% for note in notes %}
+        <li>
             <span class="begin-time">
                 <a href="{% url 'user-profile' username=note.author.username %}"
-                title="{{ note.author.first_name }} {{ note.author.last_name }} ({{ note.author }})">
-                {{ note.author.first_name }}
-            </a>
-            {% if note.author == request.user %}
+                   title="{{ note.author.first_name }} {{ note.author.last_name }} ({{ note.author }})">
+                    {{ note.author.first_name }}
+                </a>
+                {% if note.author == request.user %}
                 <span class="pull-right">
                     <a href="{% url 'bulletin-edit' note.id %}"><i class="fa fa-pencil"></i></a>
                     <a href="{% url 'bulletin-delete' note.id %}"><i class="fa fa-trash-o"></i></a></span>
-            {% endif %}
+                {% endif %}
             </span>
             {{ note.message|urlize }}<br />
             <span class="text-muted"><small>
-            {% blocktrans with TimeSince=note.posted_at|timesince %}{{ TimeSince }} ago{% endblocktrans %}
-            </small></span>
-            </li>
-            <hr>
-            {% endfor %}
-        </ul>
+                    {% blocktrans with TimeSince=note.posted_at|timesince %}{{ TimeSince }} ago{% endblocktrans %}
+                </small></span>
+        </li>
+        <hr>
+        {% endfor %}
+    </ul>
 
-        <div class="pagination-container">
+    <div class="pagination-container">
         {% bootstrap_pagination page_obj %}
-        </div>
     </div>
+</div>
 {% endblock %}
