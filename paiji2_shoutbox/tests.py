@@ -21,9 +21,10 @@ from paiji2_shoutbox.templatetags.shoutbox import (
 if django.VERSION[0] >= 1 and django.VERSION[1] >= 8:
     def reload_object(obj):
         obj.refresh_from_db()
+        return obj
 else:
     def reload_object(obj):
-        obj = obj._meta.model.objects.get(pk=obj.pk)
+        return obj._meta.model.objects.get(pk=obj.pk)
 
 
 User = get_user_model()
@@ -99,7 +100,7 @@ class PagesTestCase(BaseTestCase):
         })
         self.assertEqual(response.status_code, 302)
         self.assertEqual(Message.objects.count(), 1)
-        reload_object(self.message)
+        self.message = reload_object(self.message)
         self.assertEqual(self.message.message, 'retest')
 
     def test_delete(self):
