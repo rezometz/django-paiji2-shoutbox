@@ -26,6 +26,8 @@ INSTALLED_APPS = (
     'paiji2_shoutbox',
 )
 
+ROOT_URLCONF = 'paiji2_shoutbox.urls'
+
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
