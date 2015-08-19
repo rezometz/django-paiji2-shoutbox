@@ -7,23 +7,23 @@ from .views import *
 
 urlpatterns = [
     url(
-        r'^board$',
+        r'^$',
         login_required(NoteListView.as_view()),
-        name="bulletin-board",
+        name="message-list",
     ),
     url(
-        r'board/add$',
+        r'^add$',
         login_required(NoteCreateView.as_view()),
-        name="bulletin-add",
+        name="message-add",
     ),
     url(
-        r'board/edit/(?P<pk>[0-9]+)/$',
+        r'^edit/(?P<pk>[0-9]+)/$',
         login_required(NoteEditView.as_view()),
-        name="bulletin-edit",
+        name="message-edit",
     ),
     url(
-        r'board/delete/(?P<pk>[0-9]+)/$',
+        r'^delete/(?P<pk>[0-9]+)/$',
         login_required(NoteDeleteView.as_view()),
-        name="bulletin-delete",
+        name="message-delete",
     ),
 ]

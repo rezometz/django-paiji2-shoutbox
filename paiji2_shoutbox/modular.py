@@ -8,7 +8,7 @@ from . import urls
 class ShoutboxModule(ModuleApp):
     app_name = 'bulletin_board'
     name = 'bulletin-board'
-    urls = url(r'bulletin-board/', include(urls))
+    urls = url(r'^shoutbox/', include(urls))
     templatetag_blocks = [
         TemplateTagBlock(
             name='bulletin-board',
