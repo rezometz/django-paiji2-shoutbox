@@ -56,7 +56,7 @@ class NoteCreateView(generic.CreateView):
 class NoteEditView(generic.UpdateView):
     model = Note
     fields = ('message', )
-    template_name = 'shoutbox/note_form.html'
+    template_name = 'shoutbox/message/form.html'
 
     def dispatch(self, request, *args, **kwargs):
         """ Making sure that only authors can update notes """
@@ -72,8 +72,11 @@ class NoteEditView(generic.UpdateView):
             self.request,
             _('Your note has been updated, it will be refreshed in a moment'),
         )
-        success_url = self.request.POST.get('next')
-        return success_url if success_url is not None else reverse('index')
+        success_url = self.request.POST.get('next', None)
+        if success_url is not None:
+            return success_url
+        else:
+            return reverse(settings.REDIRECT_URL)
 
 
 class NoteDeleteView(generic.DeleteView):
