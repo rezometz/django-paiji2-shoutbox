@@ -13,7 +13,7 @@ class NoteListView(generic.ListView):
     model = Note
     paginate_by = 25
     context_object_name = 'notes'
-    template_name = 'shoutbox/note_list.html'
+    template_name = 'shoutbox/message/list.html'
 
     def get_context_data(self, **kwargs):
         context = super(NoteListView, self).get_context_data(**kwargs)

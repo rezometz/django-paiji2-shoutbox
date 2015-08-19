@@ -15,7 +15,7 @@
         {% bootstrap_pagination page_obj %}
     </div>
 
-    <form action="{% url 'bulletin-add' %}" method="post">
+    <form action="{% url 'message-add' %}" method="post">
         {% csrf_token %}
         <div class="input-group">
             <span class="input-group-addon">
@@ -27,7 +27,7 @@
         </div>
         <br />
         {% buttons %}
-        <button type="submit" style="display:none; position: absolute; left: -9999px; width: 1px; height: 1px;" class="btn btn-success pull-right"/>
+        <button type="submit"class="btn btn-success pull-right" />
             {% endbuttons %}
             <div class="clearfix"></div>
     </form>
@@ -36,7 +36,7 @@
         {% for note in notes %}
         <li>
             <span class="begin-time">
-                <a href="{% url 'user-profile' username=note.author.username %}"
+                <a href="{{ note.author.get_absolute_url }}"
                    title="{{ note.author.first_name }} {{ note.author.last_name }} ({{ note.author }})">
                     {{ note.author.first_name }}
                 </a>
