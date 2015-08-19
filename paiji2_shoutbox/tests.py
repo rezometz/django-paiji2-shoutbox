@@ -1,3 +1,4 @@
+import django
 from django.test import TestCase, Client
 from django.contrib.auth import get_user_model
 from django.core.urlresolvers import reverse
@@ -15,6 +16,14 @@ from paiji2_shoutbox.templatetags.shoutbox import (
     display_bulletin_board as display_shoutbox,
     urlize2,
 )
+
+
+if django.VERSION >= 1.8:
+    def reload_object(obj):
+        obj.refresh_from_db()
+else:
+    def reload_object(obj):
+        obj = obj._meta.model.object.get(pk=obj.pk)
 
 
 User = get_user_model()
@@ -89,7 +98,7 @@ class PagesTestCase(BaseTestCase):
         })
         self.assertEqual(response.status_code, 302)
         self.assertEqual(Message.objects.count(), 1)
-        self.message.refresh_from_db()
+        reload_object(self.message)
         self.assertEqual(self.message.message, 'retest')
 
     def test_delete(self):
