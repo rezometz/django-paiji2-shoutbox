@@ -95,6 +95,7 @@ class PagesTestCase(BaseTestCase):
 
         response = self.client.post(url, {
             'message': 'retest',
+            'next': reverse('message-list'),
         })
         self.assertEqual(response.status_code, 302)
         self.assertEqual(Message.objects.count(), 1)
