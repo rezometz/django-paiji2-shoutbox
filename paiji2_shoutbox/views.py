@@ -53,6 +53,7 @@ class NoteCreateView(generic.CreateView):
             return reverse(settings.REDIRECT_URL)
 
 
+# TODO: factorize check
 class NoteEditView(generic.UpdateView):
     model = Note
     fields = ('message', )
@@ -99,5 +100,8 @@ class NoteDeleteView(generic.DeleteView):
             self.request,
             _('Your note has been removed, it will be refreshed in a moment'),
         )
-        success_url = self.request.POST.get('next')
-        return success_url if success_url is not None else reverse('index')
+        success_url = self.request.POST.get('next', None)
+        if success_url is not None:
+            return success_url
+        else:
+            return reverse(settings.REDIRECT_URL)
