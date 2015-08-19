@@ -18,7 +18,7 @@ from paiji2_shoutbox.templatetags.shoutbox import (
 )
 
 
-if django.VERSION >= 1.8:
+if django.VERSION[0] >= 1 and django.VERSION[1] >= 8:
     def reload_object(obj):
         obj.refresh_from_db()
 else:
