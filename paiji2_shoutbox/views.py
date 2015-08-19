@@ -28,10 +28,37 @@ class NoteListView(generic.ListView):
         )
 
 
-class NoteCreateView(generic.CreateView):
+class MessageRedirect(object):
+    message_success = None
+
+    def get_success_url(self):
+        if self.message_success is not None:
+            messages.success(
+                self.request,
+                self.message_success,
+            )
+        success_url = self.request.POST.get('next', None)
+        if success_url is not None:
+            return success_url
+        else:
+            return reverse(settings.REDIRECT_URL)
+
+
+class OwnershipCheck(object):
+    def dispatch(self, request, *args, **kwargs):
+        """ Making sure that only authors can update notes """
+        obj = self.get_object()
+        if obj.author != self.request.user:
+            return HttpResponseNotFound(
+                _('Rezo is not hacked. You don\'t have the permission xD')
+            )
+        return super(OwnershipCheck, self).dispatch(request, *args, **kwargs)
+
+
+class NoteCreateView(MessageRedirect, generic.CreateView):
     model = Note
     fields = ('message', )
-    message_create = _(
+    message_success = _(
         """Your note has been added to the board, """
         """it will be displayed in a moment"""
     )
@@ -41,67 +68,19 @@ class NoteCreateView(generic.CreateView):
         form.instance.author = self.request.user
         return super(NoteCreateView, self).form_valid(form)
 
-    def get_success_url(self):
-        messages.success(
-            self.request,
-            self.message_create,
-        )
-        success_url = self.request.POST.get('next', None)
-        if success_url is not None:
-            return success_url
-        else:
-            return reverse(settings.REDIRECT_URL)
 
-
-# TODO: factorize check
-class NoteEditView(generic.UpdateView):
+class NoteEditView(MessageRedirect, OwnershipCheck, generic.UpdateView):
     model = Note
     fields = ('message', )
     template_name = 'shoutbox/message/form.html'
-
-    def dispatch(self, request, *args, **kwargs):
-        """ Making sure that only authors can update notes """
-        obj = self.get_object()
-        if obj.author != self.request.user:
-            return HttpResponseNotFound(
-                _('Rezo is not hacked. You don\'t have the permission xD')
-            )
-        return super(NoteEditView, self).dispatch(request, *args, **kwargs)
-
-    def get_success_url(self):
-        messages.success(
-            self.request,
-            _('Your note has been updated, it will be refreshed in a moment'),
-        )
-        success_url = self.request.POST.get('next', None)
-        if success_url is not None:
-            return success_url
-        else:
-            return reverse(settings.REDIRECT_URL)
+    message_success = _(
+        'Your note has been updated, it will be refreshed in a moment'
+    )
 
 
-class NoteDeleteView(generic.DeleteView):
+class NoteDeleteView(MessageRedirect, OwnershipCheck, generic.DeleteView):
     model = Note
     template_name = 'shoutbox/note_confirm_delete.html'
-
-    def dispatch(self, request, *args, **kwargs):
-        """ Making sure that only authors can update notes """
-        obj = self.get_object()
-        if obj.author != self.request.user:
-            return HttpResponseNotFound(
-                _('Rezo is not hacked. You don\'t have the permission xD')
-            )
-        return super(NoteDeleteView, self).dispatch(
-            request, *args, **kwargs
-        )
-
-    def get_success_url(self):
-        messages.success(
-            self.request,
-            _('Your note has been removed, it will be refreshed in a moment'),
-        )
-        success_url = self.request.POST.get('next', None)
-        if success_url is not None:
-            return success_url
-        else:
-            return reverse(settings.REDIRECT_URL)
+    message_success = _(
+        'Your note has been removed, it will be refreshed in a moment'
+    )
