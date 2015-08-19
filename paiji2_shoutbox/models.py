@@ -22,12 +22,8 @@ class Note(models.Model):
     )
     posted_at = models.DateTimeField(
         _('publication date'),
+        auto_now_add=True,
     )
-
-    def save(self, *args, **kwargs):
-        if self.pk is None:
-            self.posted_at = now()
-        super(Note, self).save(*args, **kwargs)
 
     class Meta:
         verbose_name = _('note')
