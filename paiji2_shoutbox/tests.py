@@ -49,3 +49,21 @@ class PagesTestCase(BaseTestCase):
         self.client.login(username='alice', password='test')
         response = self.client.get(url)
         self.assertEqual(response.status_code, 200)
+
+    def test_create(self):
+        url = reverse('message-add')
+        # Unauthenticated user
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 302)
+
+        # Authenticated user
+        self.client.login(username='alice', password='test')
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 200)
+
+        response = self.client.post(url, {
+            'message': 'test',
+        })
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(Message.objects.count(), 2)
+
