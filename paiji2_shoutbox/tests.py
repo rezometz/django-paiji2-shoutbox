@@ -67,3 +67,28 @@ class PagesTestCase(BaseTestCase):
         self.assertEqual(response.status_code, 302)
         self.assertEqual(Message.objects.count(), 2)
 
+    def test_edit(self):
+        url = reverse('message-edit', kwargs={
+            'pk': self.message.pk,
+        })
+
+        # Non owner
+        self.client.login(username='chuck', password='test')
+        response = self.client.get(url)
+
+        self.assertEqual(response.status_code, 404)
+
+        # Owner
+        self.client.login(username='alice', password='test')
+        response = self.client.get(url)
+
+        self.assertEqual(response.status_code, 200)
+
+        response = self.client.post(url, {
+            'message': 'retest',
+        })
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(Message.objects.count(), 1)
+        self.message.refresh_from_db()
+        self.assertEqual(self.message.message, 'retest')
+
