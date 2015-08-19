@@ -2,7 +2,7 @@ from django.views import generic
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseNotFound
 from django.utils.translation import ugettext as _
-
+from django.conf import settings
 from django.contrib import messages
 
 from .models import Note
@@ -35,6 +35,7 @@ class NoteCreateView(generic.CreateView):
         """Your note has been added to the board, """
         """it will be displayed in a moment"""
     )
+    template_name = 'shoutbox/message/form.html'
 
     def form_valid(self, form):
         form.instance.author = self.request.user
@@ -45,8 +46,11 @@ class NoteCreateView(generic.CreateView):
             self.request,
             self.message_create,
         )
-        success_url = self.request.POST.get('next')
-        return success_url if success_url is not None else reverse('index')
+        success_url = self.request.POST.get('next', None)
+        if success_url is not None:
+            return success_url
+        else:
+            return reverse(settings.REDIRECT_URL)
 
 
 class NoteEditView(generic.UpdateView):
