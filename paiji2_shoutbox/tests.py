@@ -23,7 +23,7 @@ if django.VERSION[0] >= 1 and django.VERSION[1] >= 8:
         obj.refresh_from_db()
 else:
     def reload_object(obj):
-        obj = obj._meta.model.object.get(pk=obj.pk)
+        obj = obj._meta.model.objects.get(pk=obj.pk)
 
 
 User = get_user_model()
