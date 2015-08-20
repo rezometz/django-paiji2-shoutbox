@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-07-22 21:37+0200\n"
+"POT-Creation-Date: 2015-08-20 20:49+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,92 +18,92 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: models.py:12
-msgid "note"
-msgstr "note"
-
-#: models.py:13
-msgid "notes"
-msgstr "notes"
-
-#: models.py:18
+#: models.py:17
 msgid "author"
 msgstr "auteur"
 
-#: models.py:22
+#: models.py:21
 msgid "message"
 msgstr "message"
 
-#: models.py:26
+#: models.py:25
 msgid "publication date"
 msgstr "date de publication"
 
-#: views.py:40
-msgid "Your note has been added to the board, it will be displayed in a moment"
-msgstr "Votre message a bien été rajouté, il sera bientôt affiché"
+#: models.py:30
+msgid "note"
+msgstr "note"
 
-#: views.py:53 views.py:70
+#: models.py:31
+msgid "notes"
+msgstr "notes"
+
+#: views.py:53
 msgid "Rezo is not hacked. You don't have the permission xD"
 msgstr "Le Rézo n’est pas piraté, tu n’as pas le droit xP"
 
-#: views.py:59
+#: views.py:62
+msgid "Your note has been added to the board, it will be displayed in a moment"
+msgstr "Votre message a bien été rajouté, il sera bientôt affiché"
+
+#: views.py:77
 msgid "Your note has been updated, it will be refreshed in a moment"
 msgstr "Votre message a été mis à jour, ce sera bientôt pris en compte"
 
-#: views.py:76
+#: views.py:85
 msgid "Your note has been removed, it will be refreshed in a moment"
 msgstr "Votre message a été supprimé, ce sera bientôt pris en compte"
 
-#: templates/bulletin_board/bulletin_board_short.html:7
-#: templates/bulletin_board/bulletin_board_short.html:30
-#: templates/bulletin_board/note_list.html:8
-#: templates/bulletin_board/note_list.html:13
-#: templates/bulletin_board/note_list.html:40
+#: templates/shoutbox/bulletin_board_short.html:7
+#: templates/shoutbox/message/list.html:8
+#: templates/shoutbox/message/list.html:12
 msgid "Shoutbox"
 msgstr "Gueuloir"
 
-#: templates/bulletin_board/bulletin_board_short.html:30
-#: templates/bulletin_board/note_list.html:40
-msgid "About"
-msgstr "À propos de"
-
-#: templates/bulletin_board/bulletin_board_short.html:43
-#: templates/bulletin_board/note_list.html:53
+#: templates/shoutbox/bulletin_board_short.html:42
+#: templates/shoutbox/message/list.html:51
 #, python-format
 msgid "%(TimeSince)s ago"
 msgstr "il y a %(TimeSince)s"
 
-#: templates/bulletin_board/bulletin_board_short.html:64
-#: templates/bulletin_board/note_list.html:13
+#: templates/shoutbox/bulletin_board_short.html:63
+#: templates/shoutbox/message/list.html:12
 msgid "Records"
 msgstr "Archives"
 
-#: templates/bulletin_board/note_confirm_delete.html:5
+#: templates/shoutbox/note_confirm_delete.html:5
 msgid "Confirm deleting a note"
 msgstr "Confirmer la suppression du message"
 
-#: templates/bulletin_board/note_confirm_delete.html:9
+#: templates/shoutbox/note_confirm_delete.html:9
 msgid "You want to delete this message ?"
 msgstr "Voulez-vous supprimer ce message ?"
 
-#: templates/bulletin_board/note_confirm_delete.html:20
+#: templates/shoutbox/note_confirm_delete.html:20
 msgid "Delete"
 msgstr "Supprimer"
 
-#: templates/bulletin_board/note_form.html:9
-#: templates/bulletin_board/note_form.html:17
+#: templates/shoutbox/message/form.html:9
+#: templates/shoutbox/message/form.html:17
 msgid "Edit a message"
 msgstr "Modifier un message"
 
-#: templates/bulletin_board/note_form.html:11
-#: templates/bulletin_board/note_form.html:19
+#: templates/shoutbox/message/form.html:11
+#: templates/shoutbox/message/form.html:19
 msgid "Publish a message"
 msgstr "Publier le message"
 
-#: templates/bulletin_board/note_form.html:36
+#: templates/shoutbox/message/form.html:36
 msgid "Update"
 msgstr "Mettre à jour"
 
-#: templates/bulletin_board/note_form.html:38
+#: templates/shoutbox/message/form.html:38
 msgid "Publish"
 msgstr "Publier"
+
+#: templates/shoutbox/message/list.html:30
+msgid "publish"
+msgstr "publier"
+
+#~ msgid "About"
+#~ msgstr "À propos de"
