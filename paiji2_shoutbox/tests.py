@@ -123,3 +123,28 @@ class PagesTestCase(BaseTestCase):
 
         self.assertEqual(response.status_code, 302)
         self.assertEqual(Message.objects.count(), 0)
+
+
+# TODO: should be improved
+class ShoutboxTagsTest(BaseTestCase):
+    def test_urlize2(self):
+        text = 'ftp://wedwd'
+        open_tag = '<a href="%s">' % text
+        close_tag = '</a>'
+        urlized = urlize2(text)
+        self.assertTrue(open_tag in urlized)
+        self.assertTrue(close_tag in urlized)
+
+        text = 'http://wedwd'
+        open_tag = '<a href="%s">' % text
+        close_tag = '</a>'
+        urlized = urlize2(text)
+        self.assertTrue(open_tag in urlized)
+        self.assertTrue(close_tag in urlized)
+
+        text = 'https://wedwd'
+        open_tag = '<a href="%s">' % text
+        close_tag = '</a>'
+        urlized = urlize2(text)
+        self.assertTrue(open_tag in urlized)
+        self.assertTrue(close_tag in urlized)
