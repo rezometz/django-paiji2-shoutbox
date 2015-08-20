@@ -19,7 +19,7 @@ def display_bulletin_board(context, nb=5):
         'request': context['request'],
         'notes': Note.objects.select_related('author').all()[:nb],
         'form': NoteForm(),
-        'bulletin_add': reverse('bulletin-add'),
+        'message_add': reverse('message-add'),
     }
 
 

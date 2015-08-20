@@ -9,7 +9,7 @@
 
 {% block content %}
 <div class="well">
-    <h3>{% trans 'Shoutbox' %}{% trans 'Records' %}</h3>
+    <h3>{% trans 'Shoutbox' %} — {% trans 'Records' %}</h3>
 
     <div class="pagination-container">
         {% bootstrap_pagination page_obj %}
@@ -42,8 +42,8 @@
                 </a>
                 {% if note.author == request.user %}
                 <span class="pull-right">
-                    <a href="{% url 'bulletin-edit' note.id %}"><i class="fa fa-pencil"></i></a>
-                    <a href="{% url 'bulletin-delete' note.id %}"><i class="fa fa-trash-o"></i></a></span>
+                    <a href="{% url 'message-edit' note.id %}"><i class="fa fa-pencil"></i></a>
+                    <a href="{% url 'message-delete' note.id %}"><i class="fa fa-trash-o"></i></a></span>
                 {% endif %}
             </span>
             {{ note.message|urlize }}<br />
