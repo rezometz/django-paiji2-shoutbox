@@ -25,9 +25,9 @@
             {% bootstrap_field form.message show_label=False %}
             <input type="hidden" value="{{ request.path }}" name="next" />
         </div>
-        <br />
+        <br/>
         {% buttons %}
-        <button type="submit"class="btn btn-success pull-right">{% trans 'publish' %}</button>
+        <button type="submit"class="btn btn-success btn-block">{% trans 'publish' %}</button>
         {% endbuttons %}
         <div class="clearfix"></div>
     </form>
