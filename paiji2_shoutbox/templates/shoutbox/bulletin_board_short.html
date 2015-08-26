@@ -3,6 +3,7 @@
 {% load bootstrap3 %}
 {% load shoutbox %}
 {% load i18n %}
+{% load profile_url %}
 
 <h3>{% trans 'Shoutbox' %}</h3>
 
@@ -27,7 +28,7 @@
     {% for note in notes %}
     <li>
     <div class="begin-time">
-        <a href="{% url 'user-profile' username=note.author.username %}"
+        <a href="{% profile_url note.author %}"
             title="{{ note.author.first_name }} {{ note.author.last_name }} ({{ note.author }})">
             {{ note.author.first_name }}
         </a>

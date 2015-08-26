@@ -4,6 +4,7 @@
 {% load shoutbox %}
 {% load i18n %}
 {% load bootstrap3 %}
+{% load profile_url %}
 
 {% block title%}{% trans 'Shoutbox' %}{% endblock %}
 
@@ -36,10 +37,9 @@
         {% for note in notes %}
         <li>
             <span class="begin-time">
-                <a href="{{ note.author.get_absolute_url }}"
-                   title="{{ note.author.first_name }} {{ note.author.last_name }} ({{ note.author }})">
-                    {{ note.author.first_name }}
-                </a>
+            <a href="{% profile_url note.author %}" title="{{ note.author.first_name }} {{ note.author.last_name }} ({{ note.author }})">
+                {{ note.author.first_name }}
+            </a>
                 {% if note.author == request.user %}
                 <span class="pull-right">
                     <a href="{% url 'message-edit' note.id %}"><i class="fa fa-pencil"></i></a>
