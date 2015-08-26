@@ -6,14 +6,14 @@ from django.core.urlresolvers import reverse
 from paiji2_shoutbox.models import (
     Note as Message,
 )
-from paiji2_shoutbox.views import (
-    NoteListView as MessageListView,
-    NoteCreateView as MessageCreateView,
-    NoteEditView as MessageEditView,
-    NoteDeleteView as MessageDeleteView,
-)
+# from paiji2_shoutbox.views import (
+#     NoteListView as MessageListView,
+#     NoteCreateView as MessageCreateView,
+#     NoteEditView as MessageEditView,
+#     NoteDeleteView as MessageDeleteView,
+# )
 from paiji2_shoutbox.templatetags.shoutbox import (
-    display_bulletin_board as display_shoutbox,
+    # display_bulletin_board as display_shoutbox,
     urlize2,
 )
 
