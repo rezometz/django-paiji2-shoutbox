@@ -17,7 +17,7 @@ os.chdir(currentdir)
 
 setup(
     name='django-paiji2-shoutbox',
-    version='0.1',
+    version='0.2',
     packages=find_packages(),
     include_package_data=True,
     description='A simple shoutbox app',
@@ -25,6 +25,7 @@ setup(
     url='https://github.com/rezometz/django-paiji2-shoutbox',
     author='Supelec Rezo Metz',
     author_email='paiji-dev@rezometz.org',
+    license='Affero GPL v3+',
     classifiers=[
         'Environment :: Web Environment',
         'Framework :: Django',
