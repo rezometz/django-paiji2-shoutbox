@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-20 20:49+0200\n"
+"POT-Creation-Date: 2015-08-27 19:21+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -38,50 +38,32 @@ msgstr "note"
 msgid "notes"
 msgstr "notes"
 
-#: views.py:53
-msgid "Rezo is not hacked. You don't have the permission xD"
-msgstr "Le Rézo n’est pas piraté, tu n’as pas le droit xP"
-
-#: views.py:62
-msgid "Your note has been added to the board, it will be displayed in a moment"
-msgstr "Votre message a bien été rajouté, il sera bientôt affiché"
-
-#: views.py:77
-msgid "Your note has been updated, it will be refreshed in a moment"
-msgstr "Votre message a été mis à jour, ce sera bientôt pris en compte"
-
-#: views.py:85
-msgid "Your note has been removed, it will be refreshed in a moment"
-msgstr "Votre message a été supprimé, ce sera bientôt pris en compte"
-
-#: templates/shoutbox/bulletin_board_short.html:7
-#: templates/shoutbox/message/list.html:8
-#: templates/shoutbox/message/list.html:12
+#: templates/shoutbox/bulletin_board_short.html:8
+#: templates/shoutbox/message/list.html:9
+#: templates/shoutbox/message/list.html:13
 msgid "Shoutbox"
 msgstr "Gueuloir"
 
-#: templates/shoutbox/bulletin_board_short.html:42
-#: templates/shoutbox/message/list.html:51
+#: templates/shoutbox/bulletin_board_short.html:38
+#: templates/shoutbox/message/list.html:47
+msgid "shoutbox"
+msgstr "gueuloir"
+
+#: templates/shoutbox/bulletin_board_short.html:38
+#: templates/shoutbox/message/list.html:47
+msgid "About"
+msgstr "À propos de"
+
+#: templates/shoutbox/bulletin_board_short.html:48
+#: templates/shoutbox/message/list.html:57
 #, python-format
 msgid "%(TimeSince)s ago"
 msgstr "il y a %(TimeSince)s"
 
-#: templates/shoutbox/bulletin_board_short.html:63
-#: templates/shoutbox/message/list.html:12
+#: templates/shoutbox/bulletin_board_short.html:71
+#: templates/shoutbox/message/list.html:13
 msgid "Records"
 msgstr "Archives"
-
-#: templates/shoutbox/note_confirm_delete.html:5
-msgid "Confirm deleting a note"
-msgstr "Confirmer la suppression du message"
-
-#: templates/shoutbox/note_confirm_delete.html:9
-msgid "You want to delete this message ?"
-msgstr "Voulez-vous supprimer ce message ?"
-
-#: templates/shoutbox/note_confirm_delete.html:20
-msgid "Delete"
-msgstr "Supprimer"
 
 #: templates/shoutbox/message/form.html:9
 #: templates/shoutbox/message/form.html:17
@@ -101,9 +83,34 @@ msgstr "Mettre à jour"
 msgid "Publish"
 msgstr "Publier"
 
-#: templates/shoutbox/message/list.html:30
+#: templates/shoutbox/message/list.html:31
 msgid "publish"
 msgstr "publier"
 
-#~ msgid "About"
-#~ msgstr "À propos de"
+#: templates/shoutbox/note_confirm_delete.html:5
+msgid "Confirm deleting a note"
+msgstr "Confirmer la suppression du message"
+
+#: templates/shoutbox/note_confirm_delete.html:9
+msgid "You want to delete this message ?"
+msgstr "Voulez-vous supprimer ce message ?"
+
+#: templates/shoutbox/note_confirm_delete.html:20
+msgid "Delete"
+msgstr "Supprimer"
+
+#: views.py:53
+msgid "Rezo is not hacked. You don't have the permission xD"
+msgstr "Le Rézo n’est pas piraté, tu n’as pas le droit xP"
+
+#: views.py:62
+msgid "Your note has been added to the board, it will be displayed in a moment"
+msgstr "Votre message a bien été rajouté, il sera bientôt affiché"
+
+#: views.py:77
+msgid "Your note has been updated, it will be refreshed in a moment"
+msgstr "Votre message a été mis à jour, ce sera bientôt pris en compte"
+
+#: views.py:85
+msgid "Your note has been removed, it will be refreshed in a moment"
+msgstr "Votre message a été supprimé, ce sera bientôt pris en compte"
