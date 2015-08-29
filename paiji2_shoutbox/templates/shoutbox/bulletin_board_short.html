@@ -8,7 +8,9 @@
 <h3>{% trans 'Shoutbox' %}</h3>
 
 <form action="{{ message_add }}" method="post">
+
     {% csrf_token %}
+
     <div class="input-group">
         <span class="input-group-addon">
             <i class="glyphicon glyphicon-envelope"></i>
@@ -16,12 +18,18 @@
         </span>
         {% bootstrap_field form.message show_label=False %}
     </div>
+
     <input type="hidden" value="{{ request.path }}" name="next" />
-    <br />
+
+    <br/>
+
     {% buttons %}
-    <button type="submit" style="display:none; position: absolute; left: -9999px; width: 1px; height: 1px;" class="btn btn-success pull-right"/>
+    <button type="submit" style="display:none; position: absolute; left: -9999px; width: 1px; height: 1px;" class="btn btn-success pull-right">
+    </button>
     {% endbuttons %}
+
     <div class="clearfix"></div>
+
 </form>
 
 <ul class="list-unstyled">
@@ -48,9 +56,10 @@
             {% blocktrans with TimeSince=note.posted_at|timesince %}{{ TimeSince }} ago{% endblocktrans %}
             </small>
         </span>
-    </li>
 
-    <hr>
+        <hr>
+
+    </li>
     {% endfor %}
 </ul>
 
@@ -70,4 +79,5 @@ Just commenting that out for the time being, let's see how users react.
     <div class="col-sm-12 unbreakable">
         <a class="btn btn-default" href="{% url 'message-list' %}">{% trans 'Records' %}</a>
     </div>
+
 </div>
