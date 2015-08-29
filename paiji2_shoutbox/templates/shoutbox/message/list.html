@@ -17,7 +17,9 @@
     </div>
 
     <form action="{% url 'message-add' %}" method="post">
+
         {% csrf_token %}
+
         <div class="input-group">
             <span class="input-group-addon">
                 <i class="glyphicon glyphicon-envelope"></i>
@@ -26,10 +28,13 @@
             {% bootstrap_field form.message show_label=False %}
             <input type="hidden" value="{{ request.path }}" name="next" />
         </div>
+
         <br/>
+
         {% buttons %}
         <button type="submit"class="btn btn-success btn-block">{% trans 'publish' %}</button>
         {% endbuttons %}
+
         <div class="clearfix"></div>
     </form>
 
@@ -59,7 +64,11 @@
             </span>
 
         </li>
-        <hr/>
+
+        <li>
+            <hr/>
+        </li>
+
         {% endfor %}
     </ul>
 
