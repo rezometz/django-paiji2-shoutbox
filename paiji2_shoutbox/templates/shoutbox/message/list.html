@@ -32,7 +32,7 @@
         <br/>
 
         {% buttons %}
-        <button type="submit"class="btn btn-success btn-block">{% trans 'publish' %}</button>
+        <button type="submit" class="btn btn-success btn-block">{% trans 'publish' %}</button>
         {% endbuttons %}
 
         <div class="clearfix"></div>
@@ -47,7 +47,7 @@
             <span class="pull-right">
                 {% if note.author == request.user %}
                     <a href="{% url 'message-edit' note.id %}"><i class="fa fa-pencil"></i></a>
-                    <a href="{% url 'message-delete' note.id %}"><i class="fa fa-trash-o"></i></a></span>
+                    <a href="{% url 'message-delete' note.id %}"><i class="fa fa-trash-o"></i></a>
                 {% else %}
                     {% with subject='['|add:_('shoutbox')|add:'] '|add:_('About')|add:' : "'|add:note.message|add:'"' %}
                     {% mail_link note.author '' subject %}
@@ -56,7 +56,7 @@
             </span>
 
             {{ note.message|urlize }}
-            
+
             <span class="text-muted">
                 <small>
                     {% blocktrans with TimeSince=note.posted_at|timesince %}{{ TimeSince }} ago{% endblocktrans %}
