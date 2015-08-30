@@ -1,10 +1,8 @@
-import re
-
 from django import template
 from django.core.urlresolvers import reverse
 
 from ..models import Note
-from ..forms import NoteForm
+from ..forms import BlockNoteForm
 
 
 register = template.Library()
@@ -18,18 +16,6 @@ def display_bulletin_board(context, nb=5):
     return {
         'request': context['request'],
         'notes': Note.objects.select_related('author').all()[:nb],
-        'form': NoteForm(),
+        'form': BlockNoteForm(),
         'message_add': reverse('message-add'),
     }
-
-
-@register.filter
-def urlize2(text):
-    url_regex = re.compile(r'((ftp|https?)://\S*)')
-
-    def replacement(matchobj):
-        return ('<a href="{link}">[link]</a>').format(
-            link=matchobj.group(0),
-        )
-
-    return re.sub(url_regex, replacement, text)

@@ -41,7 +41,7 @@ class MessageRedirect(object):
         if success_url is not None:
             return success_url
         else:
-            return reverse(settings.REDIRECT_URL)
+            return settings.REDIRECT_URL
 
 
 class OwnershipCheck(object):
