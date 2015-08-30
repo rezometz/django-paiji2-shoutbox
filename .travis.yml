@@ -14,10 +14,12 @@ install:
   - pip install -r requirements.txt -U
   - pip install -q -e .
 before_script:
-  - "pep8 --exclude=migrations paiji2_shoutbox"
+  - pep8 --exclude=migrations paiji2_shoutbox
   - pyflakes paiji2_shoutbox
 script:
   - coverage run --source=paiji2_shoutbox manage.py test
   - python setup.py test
 after_success:
   - coveralls
+after_failure:
+  - cat validation_errors/*

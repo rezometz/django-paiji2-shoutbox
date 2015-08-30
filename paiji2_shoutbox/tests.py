@@ -1,5 +1,6 @@
 import django
-from django.test import TestCase, Client
+from django.test import TestCase  # , Client
+from htmlvalidator.client import ValidatingClient
 from django.contrib.auth import get_user_model
 from django.core.urlresolvers import reverse
 
@@ -12,7 +13,7 @@ from paiji2_shoutbox.models import (
 #     NoteEditView as MessageEditView,
 #     NoteDeleteView as MessageDeleteView,
 # )
-from paiji2_shoutbox.templatetags.shoutbox import (
+from paiji2_utils.templatetags.urlize2 import (
     # display_bulletin_board as display_shoutbox,
     urlize2,
 )
@@ -44,7 +45,7 @@ class BaseTestCase(TestCase):
             author=self.alice,
             message='test',
         )
-        self.client = Client(enforce_csrf_checkts=True)
+        self.client = ValidatingClient()
 
 
 class PagesTestCase(BaseTestCase):
