@@ -1,5 +1,5 @@
 from django.views import generic
-from django.core.urlresolvers import reverse
+# from django.core.urlresolvers import reverse
 from django.http import HttpResponseNotFound
 from django.utils.translation import ugettext as _
 from django.conf import settings
