@@ -19,7 +19,7 @@
         {% bootstrap_field form.message show_label=False %}
     </div>
 
-    <input type="hidden" value="{{ request.path }}" name="next" />
+    <input type="hidden" value="{{ request.get_full_path }}" name="next" />
 
     <br/>
 
