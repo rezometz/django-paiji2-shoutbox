@@ -13,10 +13,6 @@ from paiji2_shoutbox.models import (
 #     NoteEditView as MessageEditView,
 #     NoteDeleteView as MessageDeleteView,
 # )
-from paiji2_utils.templatetags.urlize2 import (
-    # display_bulletin_board as display_shoutbox,
-    urlize2,
-)
 
 
 def reload_object(obj):
@@ -123,28 +119,3 @@ class PagesTestCase(BaseTestCase):
 
         self.assertEqual(response.status_code, 302)
         self.assertEqual(Message.objects.count(), 0)
-
-
-# TODO: should be improved
-class ShoutboxTagsTest(BaseTestCase):
-    def test_urlize2(self):
-        text = 'ftp://wedwd'
-        open_tag = '<a href="%s">' % text
-        close_tag = '</a>'
-        urlized = urlize2(text)
-        self.assertTrue(open_tag in urlized)
-        self.assertTrue(close_tag in urlized)
-
-        text = 'http://wedwd'
-        open_tag = '<a href="%s">' % text
-        close_tag = '</a>'
-        urlized = urlize2(text)
-        self.assertTrue(open_tag in urlized)
-        self.assertTrue(close_tag in urlized)
-
-        text = 'https://wedwd'
-        open_tag = '<a href="%s">' % text
-        close_tag = '</a>'
-        urlized = urlize2(text)
-        self.assertTrue(open_tag in urlized)
-        self.assertTrue(close_tag in urlized)
