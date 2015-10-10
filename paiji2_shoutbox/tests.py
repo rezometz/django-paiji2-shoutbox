@@ -69,7 +69,8 @@ class PagesTestCase(BaseTestCase):
         self.assertEqual(response.status_code, 200)
 
         response = self.client.post(url, {
-            'message': 'test https://fr.wikipedia.org/wiki/Équation_de_Pell-Fermat',
+            'message': 'test\
+                 https://fr.wikipedia.org/wiki/Équation_de_Pell-Fermat',
         })
         self.assertEqual(response.status_code, 302)
         self.assertEqual(Message.objects.count(), 2)
