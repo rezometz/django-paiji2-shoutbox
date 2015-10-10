@@ -14,7 +14,7 @@ class ShoutboxModule(ModuleApp):
             name='bulletin-board',
             library='shoutbox',
             tag='display_bulletin_board',
-            cache_time=30 * 60,
+            cache_time=1,
             kwargs={
                 'nb': 10,
             },
